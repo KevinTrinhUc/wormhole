@@ -7,7 +7,7 @@ mkdir -p ~/.config/solana/cli
 cat <<EOF > ~/.config/solana/cli/config.yml
 json_rpc_url: "http://127.0.0.1:8899"
 websocket_url: ""
-keypair_path: /usr/src/solana/keys/solana-devnet.json
+keypair_path: /Users/kien6034/.config/solana/id.json
 EOF
 
 # Static key for the mint so it always has the same address
@@ -80,7 +80,7 @@ echo "Created NFT account $nft_account"
 spl-token mint "$nft" 1 "$nft_account"
 
 # Create meta for token
-token-bridge-client create-meta "$nft" "Not a PUNK🎸" "PUNK🎸" "https://wrappedpunks.com:3000/api/punks/metadata/39"
+#token-bridge-client create-meta "$nft" "Not a PUNK🎸" "PUNK🎸" "https://wrappedpunks.com:3000/api/punks/metadata/39"
 
 nft=$(spl-token create-token --decimals 0 -- nft2.json | grep 'Creating token' | awk '{ print $3 }')
 echo "Created NFT $nft"
@@ -90,7 +90,7 @@ echo "Created NFT account $nft_account"
 
 spl-token mint "$nft" 1 "$nft_account"
 
-token-bridge-client create-meta "$nft" "Not a PUNK 2🎸" "PUNK2🎸" "https://wrappedpunks.com:3000/api/punks/metadata/51"
+#token-bridge-client create-meta "$nft" "Not a PUNK 2🎸" "PUNK2🎸" "https://wrappedpunks.com:3000/api/punks/metadata/51"
 
 # Create a new SPL NFT
 nft=$(spl-token create-token --decimals 0 -- nft3.json | grep 'Creating token' | awk '{ print $3 }')
@@ -104,7 +104,7 @@ echo "Created NFT account $nft_account"
 spl-token mint "$nft" 1 "$nft_account"
 
 # Create meta for token
-token-bridge-client create-meta "$nft" "Not a PUNK3🎸" "PUNK3🎸" "https://wrappedpunks.com:3000/api/punks/metadata/69"
+#token-bridge-client create-meta "$nft" "Not a PUNK3🎸" "PUNK3🎸" "https://wrappedpunks.com:3000/api/punks/metadata/69"
 
 # Create the bridge contract at a known address
 # OK to fail on subsequent attempts (already created).

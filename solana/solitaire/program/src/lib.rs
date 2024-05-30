@@ -18,10 +18,7 @@ use solana_program::{
 
 use std::slice::Iter;
 
-pub use borsh::{
-    BorshDeserialize,
-    BorshSerialize,
-};
+pub use borsh::{ BorshDeserialize, BorshSerialize };
 
 // Expose all submodules for consumption.
 pub mod error;
@@ -32,24 +29,13 @@ pub mod types;
 // We can also re-export a set of types at module scope, this defines the intended API we expect
 // people to be able to use from top-level.
 pub use crate::{
-    error::{
-        ErrBox,
-        Result,
-        SolitaireError,
-    },
+    error::{ ErrBox, Result, SolitaireError },
     macros::*,
     processors::{
         keyed::Keyed,
         peel::Peel,
         persist::Persist,
-        seeded::{
-            invoke_seeded,
-            AccountOwner,
-            AccountSize,
-            Creatable,
-            Owned,
-            Seeded,
-        },
+        seeded::{ invoke_seeded, AccountOwner, AccountSize, Creatable, Owned, Seeded },
     },
     types::*,
 };
@@ -90,6 +76,5 @@ impl CreationLamports {
 /// references. A list of dependent accounts is produced as a side effect of the parsing stage.
 pub trait FromAccounts<'a, 'b: 'a> {
     fn from<T>(_: &'a Pubkey, _: &mut Iter<'a, AccountInfo<'b>>, _: &'a T) -> Result<Box<Self>>
-    where
-        Self: Sized;
+        where Self: Sized;
 }

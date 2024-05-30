@@ -1,0 +1,16 @@
+{
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@types/jest": "^29.5.12",
+    "ts-jest": "^29.1.4",
+    "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "@project-serum/anchor": "^0.26.0",
+    "@solana/spl-token": "^0.4.6",
+    "@solana/web3.js": "^1.91.8"
+  },
+  "scripts": {
+    "test": "export TS_JEST_DISABLE_VER_CHECKER=true && export JEST_JUNIT_OUTPUT_DIR=reports && npx jest --verbose --coverage --coverageProvider=v8 --collectCoverage=true"
+  }
+}
