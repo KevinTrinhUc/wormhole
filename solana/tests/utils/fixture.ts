@@ -6,14 +6,23 @@ import {
   Transaction,
   SystemProgram,
 } from "@solana/web3.js";
-import { AnchorProvider, Wallet, BN, Address } from "@project-serum/anchor";
+import {
+  AnchorProvider,
+  Wallet,
+  BN,
+  Address,
+  Program,
+} from "@project-serum/anchor";
 import { TOKEN_PROGRAM_ID, createMint } from "@solana/spl-token";
 import * as consts from "./consts";
+import fs from "fs";
+const idl = JSON.parse(fs.readFileSync("./idl/token_bridge.json", "utf8"));
 
 export type TestFixture = {
   provider: AnchorProvider;
   accounts: TestAccounts;
   tokenMint: PublicKey;
+  bridgeProgram: Program;
 };
 
 export const getTestFixture = async function () {
@@ -37,10 +46,17 @@ export const getTestFixture = async function () {
     consts.TOKEN_DECIMAL
   );
 
+  const program = new Program(
+    idl,
+    "B6RHG3mfcckmrYN1UhmJzyS1XX3fZKbkeUcpJe9Sy3FE",
+    provider
+  );
+
   return {
     provider,
     accounts,
     tokenMint,
+    bridgeProgram: program,
   };
 };
 
